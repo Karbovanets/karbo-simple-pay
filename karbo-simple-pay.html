@@ -805,10 +805,10 @@ function getTransaction(id) {
 	method: "POST",
 	data: JSON.stringify({
 		jsonrpc:"2.0",
-		id: "test",
-		method:"check_tx_with_view_key",
+		id: "simplepay",
+		method:"checktransactionbyviewkey",
 		params: {
-			txid:id,
+			transaction_id:id,
 			view_key:privateViewKey,
 			address:publicAddress
 		}
@@ -848,8 +848,8 @@ function getTransactions() {
 	method: "POST",
 	data: JSON.stringify({
 		jsonrpc:"2.0",
-		id: "test",
-		method:"get_transaction_hashes_by_payment_id",
+		id: "simplepay",
+		method:"gettransactionhashesbypaymentid",
 		params: {
 			paymentId:payment_id
 		}
