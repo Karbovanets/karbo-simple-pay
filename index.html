@@ -21,8 +21,10 @@
 		white-space: pre-line;
 		-ms-word-break: break-all;
 		word-break: break-word;
+	}	
+	.navbar-default {
+		background-image: linear-gradient(125deg,#0E073F 0%, #0057B8 34%, #0AADFD 100%);
 	}
-
 	.navbar-default .navbar-brand {
 	color: #FFF200;
 	}
@@ -74,7 +76,8 @@
 	
 	.banner .banner-content {
 	padding: 15em 0 15em;
-    background-image: linear-gradient(135deg,rgba(85,196,247,0.95) 0%,rgba(84,80,157,0.65) 60%,rgba(85,196,247,0.95) 100%);
+	background-color: #127CC6;
+    background-image: linear-gradient(165deg,#0E073F 0%, #0057B8 43%, #0AADFD 100%);
     background-size: cover;
     background-attachment: fixed;		
 	}
@@ -83,7 +86,8 @@
 		padding: 9em 0 9em;
 		overflow: hidden;
 		position: relative;
- 		background: transparent url(/images/ekrb.svg);
+		background-color: #127CC6;
+ 		background-image: linear-gradient(175deg,#0E073F 50%, #0057B8 75%, #0AADFD 100%);
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-attachment: fixed;
@@ -298,9 +302,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="https://karbo.io/" style="">
-			
-       
-					
+		
 					<svg style="display: inline-block; vertical-align: text-top; margin-top: -14px;" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 2500000 2500000" width="48px" height="48px" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<g>
 							<circle fill="#00A0E3" cx="1250000" cy="1250000" r="1214062" render-order="1">
@@ -319,9 +321,7 @@
 							<polygon fill="#FFEC00" points="164.002,142.947 103.339,82.284 42.675,142.947 53.162,153.434 103.339,103.256 153.516,153.434 "></polygon>
 						</g>
 					</svg>
-					
 
-		  
 		  <!--span id="coinIcon">&#1180;</span--> KARBO</a>
         </div>
         <div class="navbar-collapse collapse">
@@ -329,6 +329,11 @@
             <li>
 				<a href="#" id="settingsLink">
 					<span class="glyphicon glyphicon-cog"></span> <strong>Settings</strong>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="helpLink">
+					<span class="glyphicon glyphicon-question-sign"></span> <strong>Help</strong>
 				</a>
 			</li>
           </ul>
@@ -344,7 +349,7 @@
           <div class="col-lg-12">
 			
 				<h1 class="title" id="headerName">KARBO.club<sup>&beta;</sup></h1>
-				<h3>Karbo Payment Gateway</h3>
+				<h3>Simple Karbo Payment Gateway</h3>
 			
 		  </div>
 		</div>
@@ -390,7 +395,7 @@
 				<div class="form-group">
 				  <div class="col-lg-4 col-lg-offset-2 text-left">
 					<!--input type="submit" class="btn btn-success btn-lg" value="CREATE REQUEST"-->
-					<button type="button" class="btn btn-success btn-lg" id="createRequest">Request Payment</button>
+					<button type="button" class="btn btn-success btn-lg" id="createRequest">Request / Check Payment</button>
 				  </div>
 				</div>
 			  </fieldset>
@@ -528,7 +533,44 @@
       </div>
     </div>
   </div>
+  
+  <div class="modal fade modal-scrollable" id="showHelpModal" tabindex="-1" role="dialog" aria-labelledby="showHelpModal" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Help</h4>
+        </div>
+        <div class="modal-body">
+			
+			<p><strong><em>Welcome to the Simple Karbo Payment Gateway!</em></strong></p>
 
+			<h4>What is this [for]?</h4>
+			<p>This is client-side Payment Gateway that allows you to securely check for payment to your wallet address without need to keep wallet software open and thus e.g. without risking giving access to your funds or need to download blockchain or wait till wallet finishes synchronization. All you need is a browser and your wallet's <em>public address</em> and <em>View Secret Key</em>. It works with any public Karbo node, just enter it's URL in Settings.</p>
+			
+			<h4>How it works?</h4>
+			<p>In order to check payments to your address you need to enter your wallet's <em>view secret key</em> which can be found in your wallet software's 'Export private keys' menu option.</p>
+			<p>When you create a payment request the Gateway starts polling the node for transactions with given <em>Payment Id</em> untill the node returns transaction(s) to your address with amount transferred that covers the requested amount. Yes, it is that simple.</p>
+			
+			<h4>Is it secure</h4>
+			<p>This gateway is client-side, your wallet's <em>View Secret Key</em> and other settings are stored in your browser persistent memory and are never sent to any servers, so it is quite secure.</p>
+			
+			<h4>How to recheck previous transaction?</h4>
+			
+			<p>Simply enter previous (or any) <em>Payment Id</em> and corresponding amount and click 'Request Payment' button.</p>
+			
+			<h4>Split payment</h4>
+			
+			<p>Split payments in several transactions are supported. It will show payment as underpaid untill there's enough amount in transactions with given <em>Payment Id</em>.</p>
+			
+		</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   
 <div class="splash small" id="footer">
   <div class="karbo">
@@ -593,6 +635,10 @@ $('#settingsLink').click(function() {
 	showSettingsModal.modal('show');
 });
 
+$('#helpLink').click(function() {
+	showHelpModal.modal('show');
+});
+
 $('#createRequest').click(function() {
 	createPaymentRequest();
 });
@@ -606,6 +652,11 @@ showSettingsModal.on('show.bs.modal', function(event) {
 	$("#publicAddress").val(publicAddress);
 	$("#privateViewKey").val(privateViewKey);
 	$("#paymentConfirmations").val(requiredConfirmations);
+});
+
+var showHelpModal = $('#showHelpModal');
+showHelpModal.on('show.bs.modal', function(event) {
+	
 });
 
 $("#saveSettings").click(function() {
@@ -633,6 +684,7 @@ $("#saveSettings").click(function() {
 	init();
 	calculateRate();
     showSettingsModal.modal('hide');
+	showHelpModal.modal('hide');
 });
  
 $('#useDefaultNode').click(function() {
