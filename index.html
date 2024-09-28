@@ -9,7 +9,7 @@
   <meta name="keywords" content="Karbo, Karbowanec, Payment, Gateway, wallet generator">
   <meta name="description" content="Karbo Payment Gateway via decentralized API">
 
-  <link rel="shortcut icon" href="https://karbo.io/images/ico/favicon.ico">
+  <link rel="shortcut icon" href="https://karbo.org/favicon.ico">
  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
   <style type="text/css">
@@ -301,7 +301,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://karbo.io/" style="">
+          <a class="navbar-brand" href="https://karbo.org/" style="">
 		
 					<svg style="display: inline-block; vertical-align: text-top; margin-top: -14px;" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 2500000 2500000" width="48px" height="48px" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<g>
@@ -416,8 +416,8 @@
 			
 		  </div>
           <div class="col-lg-4">
-			<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script><div class="coinmarketcap-currency-widget" data-currencyid="1340" data-base="UAH" data-secondary="USD" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
-		  </div>
+			<script type="text/javascript" src="https://unpkg.com/@coinpaprika/widget-currency/dist/widget.min.js"></script><div class="coinpaprika-currency-widget cp-widget__night-mode" data-primary-currency="usd" data-currency="krb-karbo" data-custom-date="false" data-start-date="0" data-end-date="0" data-modules='["market_details"]' data-update-active="false"></div>
+          </div>
           <div class="col-lg-4">
 			
 		  </div>
@@ -618,8 +618,8 @@ $(function() {
 
 var coinUnits = 1000000000000;
 var ticker = 'KRB';
-var defaultNode = 'https://karbo.club/services/node_web/';
-var block_explorer = "http://explorer.karbo.org/?hash=";
+var defaultNode = 'https://node.karbo.org:32448/';
+var block_explorer = "https://explorer.karbo.org/?hash=";
 var apiNodeUrl, merchantName, publicAddress, privateViewKey, requiredConfirmations, exchangeRate, fiatCurrency, PaymentRequest, payment_id, amount_due = 0;
 var current_height = Number.MAX_SAFE_INTEGER;
 var requestOpen = false;
